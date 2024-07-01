@@ -1,0 +1,34 @@
+{% extends "app1/base.html" %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea, select {
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Employee</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="background-color: rgb(34, 197, 94); color: white; padding: 1px 6px; margin: 0 5px; border-radius: 5px; text-decoration: none;">Edit Employee</button>
+        <a href="{% url 'app1:get_employees_from_api'%}" style="background-color: rgb(34, 197, 94); color: white; padding: 1px 6px; margin: 0 5px; border-radius: 5px; text-decoration: none;">Return</a>
+    </form>
+</body>
+</html>
+{% endblock content %}

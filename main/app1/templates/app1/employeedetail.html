@@ -1,0 +1,48 @@
+{% extends "app1/base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .employee-details {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: left;
+        }
+        .employee-details img {
+            margin-right: 20px;
+        }
+        .employee-details ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .employee-details ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>{{ employee.name }} Details</title>
+</head>
+<body>
+    <div class="employee-details">
+        <img src="{{ employee.image }}" alt="{{ employee.name }} Image" width="200" height="200">
+        <div>
+            <h1>{{ employee.name }} Details</h1>
+            <ul>
+                <li>ID: {{ employee.id }}</li>
+                <li>Name: {{ employee.name }}</li>
+                <li>Salary: {{ employee.salary }}</li>
+                <li>Age: {{ employee.age }}</li>
+            </ul>
+            <a href="{% url 'app1:employee_edit' employee.id %}" style="background-color: rgb(34, 197, 94); color: white; padding: 1px 6px; margin: 0 5px; border-radius: 5px; text-decoration: none;">Employee edit</a>
+        </div>
+    </div>
+    
+</body>
+</html>
+{% endblock content %}

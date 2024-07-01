@@ -1,0 +1,22 @@
+{% extends "app1/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+</head>
+<body>
+    <div class="sm:text-center lg:text-left">
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900">
+            <span class="block xl:inline">Employee with id {{employee_id}} was delete</span>
+        </h3>
+    </div>
+    <ul>
+        <a href="{% url 'app1:get_employees_from_api'%}" style="background-color: rgb(34, 197, 94); color: white; padding: 1px 6px; margin: 0 5px; border-radius: 5px; text-decoration: none;">Return</a>
+    </ul>
+</body>
+</html>
+{% endblock content %}

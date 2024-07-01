@@ -1,0 +1,82 @@
+{% extends "app1/base.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+    <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+        <div class="sm:text-center lg:text-left">
+            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <span class="block xl:inline">Employee</span>
+                <span class="block xl:inline text-green-500">Management System</span>
+            </h1>
+        </div>
+    <style>
+        table {
+            width: 100%; 
+            border-collapse: collapse; 
+        }
+        th, td {
+            border: 1px solid black; 
+            padding: 8px; 
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <table style="margin-top: 50px;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Age</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.salary }}</td>
+                <td>{{ employee.age }}</td>
+                <td>
+                    <img src="{{ employee.image }}" alt="Employee Image" width="100" height="100">
+                </td>
+                <td>
+                    <a href="{% url 'app1:employee_detail' employee.id %}" style="background-color: rgb(34, 197, 94); color: white; padding: 1px 6px; margin: 0 5px; border-radius: 5px; text-decoration: none;">View</a> 
+                    <a href="{% url 'app1:employee_delete' employee.id %}" style="background-color: rgba(214, 8, 8, 0.911); color: white; padding: 1px 6px; margin: 0 5px; border-radius: 5px; text-decoration: none;">Delete</a>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'app1:employee_add' %}" style="background-color: rgb(34, 197, 94); color: white; padding: 1px 6px; margin: 0 5px; border-radius: 5px; text-decoration: none;">Employee add</a>
+
+    <div id="modal" style="display: none;">
+        <h2>Add/Edit Employee</h2>
+        <form id="employeeForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="salary">Salary:</label>
+            <input type="text" id="salary" name="salary"><br><br>
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age"><br><br>
+            <input type="submit" value="Save">
+        </form>
+        
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <script>
+        setInterval(function() {
+            location.reload();
+        }, 30000);
+    </script>
+</body>
+</html>
+{% endblock content %}
